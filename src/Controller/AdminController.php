@@ -16,12 +16,10 @@ class AdminController extends CustomerController
 
 
     /**
-     * @Route("/admin/{id}", name="admin_customer_show")
+     * @Route("/admin", name="admin_customer_show")
      */
     public function adminCustomer(Request $request, $id = 0)
     {
-
-        echo "NICE";
 
         if ($request->get('limit')) {
             $this->customersShowLimit = $request->get('limit');

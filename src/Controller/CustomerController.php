@@ -9,6 +9,7 @@ use App\Entity\Staff;
 use App\Form\Type\CustomerType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 class CustomerController extends AbstractController
@@ -89,19 +90,13 @@ class CustomerController extends AbstractController
 
         $customer = new Customers();
 
+
         $form = $this->createForm(CustomerType::class, $customer);
 
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // if (!$form->isValid()) {
-            //     return $this->render('customer/customer_form.html.twig', [
-            //                 'form' => $form->createView(),
-            //                 'customerRegistered' => $this->customerRegistered
-            //             ]);
-            // }
 
             $this->customerRegistered = true;
 
