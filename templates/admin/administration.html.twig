@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+	<h2> Admin page </h2>
+		<div>
+			{% if servedCustomerId %}
+				<p style="color:green;"> Customer {{ servedCustomerId }} served! </p>
+			{% endif %}
+		</div>
+		<div>
+			<table style="font-size:13px">
+				<tr>
+					<th>LIMIT:</th>
+					<td><a href="/admin?limit=5">5</a>&nbsp;|&nbsp;</td>
+					<td><a href="/admin?limit=10">10</a>&nbsp;|&nbsp;</td>
+					<td><a href="/admin?limit=15">15</a>&nbsp;|&nbsp;</td>
+					<td><a href="/admin?limit=all">ALL</a></td>										
+				</tr>
+			</table>		 
+		</div>
+	<table>
+	  <tr>
+	    <th>ID</th>
+	    <th>Name</th>
+	    <th colspan="2">Action</th>
+	  </tr>
+		
+	    {% for customer in customers %}
+	    	<tr>
+		        <td>{{ customer.id|e }}</td>
+		        <td>{{ customer.name|e }}</td>
+
+		        <td> 
+		        {% if customer.served|e == 0 %}		    
+		        	<a href="admin/customerServed/{{ customer.id|e }}?limit={{ app.request.query.get('limit') }}">SERVED</a>			        
+		        {% endif %}
+		        </td>
+
+		        <td><a href="admin/customerDelete/{{ customer.id|e }}?limit={{ app.request.query.get('limit') }}">DELETE</a></td>
+		        
+		    </tr>
+	    {% endfor %}
+
+	</table>
+{% endblock %}

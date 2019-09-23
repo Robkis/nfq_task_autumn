@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<h2> Main page </h2>
+	<div>
+		{% if message %}
+			<p style="color:red;"> {{ message }} </p>
+		{% endif %}
+	</div>
+	<ul>
+		<li><a href="/board">Board Page</a></li>
+		<li><a href="/customer/new">New Customer Page</a></li>
+		<li><a href="/admin">Admin Page</a></li>
+		<li><a href="/customer?customerId=99999">Customer page (TEST)</a></li>
+	</ul>
+{% endblock %}

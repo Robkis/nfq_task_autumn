@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<h2> Board </h2>
+	<div>
+		{% if customerRegistered == true %}
+			<p style="color:green;"> Customer registered successfully! </p>
+		{% endif %}
+	</div>
+	<div>
+		<table style="font-size:13px">
+			<tr>
+				<th>LIMIT:</th>
+				<td><a href="/board?limit=5">5</a>&nbsp;|&nbsp;</td>
+				<td><a href="/board?limit=10">10</a>&nbsp;|&nbsp;</td>
+				<td><a href="/board?limit=15">15</a></td>
+			</tr>
+		</table>		 
+	</div>
+{# 	<div>
+		<table style="font-size:13px">
+			<tr>
+				<th>SHOW:</th>
+				<td><a href="/board?allCustomers=1">ALL</a>&nbsp;|&nbsp;</td>
+				<td><a href="/board?allCustomers=0">NOT SERVED</a></td>
+			</tr>
+		</table>		 
+	</div>	 #}
+	<table>
+	  <tr>
+	    <th>ID</th>
+	    <th>Name</th>
+	  </tr>
+		
+	    {% for customer in customers %}
+	    	<tr>
+		        <td>{{ customer.id|e }}</td>
+		        <td>{{ customer.name|e }}</td>
+		    </tr>
+	    {% endfor %}
+
+	</table>
+{% endblock %}

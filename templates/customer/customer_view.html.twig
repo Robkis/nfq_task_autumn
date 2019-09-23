@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block meta %}<meta http-equiv="refresh" content="5;url=/customer?customerId=99999" />{% endblock %}
+
+{% block body %}
+	<h2>Customer view page</h2>
+
+	<table>
+	  <tr>
+	    <th>People in front of you: </th>	   
+	    <td>20</td>	     
+	  </tr>	  
+	  <tr>
+	  	<th>Average time till service: </th>
+	  	<td>15<i>min</i></td>
+	  </tr>
+	</table>
+
+{% endblock %}
